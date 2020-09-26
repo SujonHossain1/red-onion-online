@@ -32,12 +32,24 @@ function App() {
         }
 
     }
-
-    // console.log(cart);
+    const checkOutItemHandler = (productId, productQuantity) => {
+        const newCart = cart.map(item => {
+          if(item.id === productId){
+              item.quantity = productQuantity;
+          }
+          return item;
+        })
+  
+        const filteredCart = newCart.filter(item => item.quantity > 0)
+        setCart(filteredCart)
+      }
+     
+    
+    console.log(cart);
 
     return (
         <UserContext.Provider>
-            <CartContext.Provider value={{ cart, handleAddToCart }}>
+            <CartContext.Provider value={{ cart, handleAddToCart, checkOutItemHandler }}>
                 <Router>
                     <Route exact path="/">
                         <Header />
@@ -49,10 +61,12 @@ function App() {
                     <Route path="/foods/:foodId">
                         <Header />
                         <FoodDetails />
+                        <Footer />
                     </Route>
                     <Route path="/checkout">
                         <Header />
                         <Checkout />
+                        <Footer />
                     </Route>
                 </Router>
             </CartContext.Provider>

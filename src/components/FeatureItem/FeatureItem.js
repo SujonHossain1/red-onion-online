@@ -23,7 +23,7 @@ const FeatureItem = ({ feature }) => {
                         <img style={{ marginRight: '8px' }} src={logo} alt="" />
                     </div>
                     <div>
-                        <h4>{title}</h4>
+                        <h4 className="mt-2">{title}</h4>
                     </div>
                 </div>
                 <p>

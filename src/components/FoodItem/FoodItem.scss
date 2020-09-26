@@ -1,4 +1,23 @@
-.food-item{
-    box-shadow: 1px 1px 3px gray;
-    
+.food-item .card {
+    border: none;
+}
+
+.food-item .card-img-top {
+    width: 60%;
+    display: block;
+    padding-top: 10px;
+    margin: 0 auto;
+}
+
+.food-item a {
+    color: #000;
+}
+
+.food-item a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.food-item .card:hover {
+    box-shadow: 0 5px 13px 0px #eae8e87a;
 }

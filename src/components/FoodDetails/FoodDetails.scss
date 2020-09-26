@@ -1,0 +1,34 @@
+.food-description {
+    h1 {
+        margin-bottom: 45px;
+    }
+
+    p {
+        margin-bottom: 45px;
+    }
+
+    .quantity-btn {
+        padding: 10px 12px ;
+        border-radius: 25px;
+        border: 1px solid #d3d3d3;
+        padding-bottom: 14px;
+    }
+    .success-mgs{
+        animation: show-hide 1.5s ease-in-out  1 forwards;
+        font-style: italic;
+    }
+    @keyframes show-hide{
+        0%{
+            opacity: 0;
+        }
+        50%{
+            opacity: 1;
+        }
+        75%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+}
