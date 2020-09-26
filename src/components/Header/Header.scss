@@ -1,0 +1,36 @@
+.navbar {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+
+    img {
+        height: 50px;
+    }
+
+    .btn:hover {
+        color: #212529;
+        text-decoration: none;
+    }
+
+    .btn-rounded {
+        border-radius: 25px;
+        background-color: rgb(255, 69, 101);
+        border: none;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .cart-style {
+        font-size: 18px;
+        margin-top: 8px;
+    }
+
+    .count {
+        background-color: rgb(232, 231, 231);
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 11px;
+        display: inline-block;
+        height: 17px;
+        width: 17px;
+        text-align: center;
+    }
+}

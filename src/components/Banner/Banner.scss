@@ -1,0 +1,27 @@
+.banner {
+    background: url('https://i.postimg.cc/bJ5cmDK8/bannerbackground-e0679251.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 80vh;
+
+    .form-control {
+        border-radius: 25px;
+        border: none;
+        padding-left: 20px;
+    }
+    .btn-rounded{
+        border-radius: 25px;
+        background-color: rgb(255, 69, 101);
+        border: none;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    .search-btn {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        height: 100%;
+    }
+}
+

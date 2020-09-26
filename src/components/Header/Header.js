@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import logo from '../../images/logo2.png';
-import './Header.css';
+import './Header.scss';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../App';
 

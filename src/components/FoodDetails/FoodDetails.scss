@@ -7,27 +7,40 @@
         margin-bottom: 45px;
     }
 
+    .btn-rounded {
+        border-radius: 25px;
+        background-color: rgb(255, 69, 101);
+        border: none;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
     .quantity-btn {
-        padding: 10px 12px ;
+        padding: 10px 12px;
         border-radius: 25px;
         border: 1px solid #d3d3d3;
         padding-bottom: 14px;
     }
-    .success-mgs{
-        animation: show-hide 1.5s ease-in-out  1 forwards;
+
+    .success-mgs {
+        animation: show-hide 1.5s ease-in-out 1 forwards;
         font-style: italic;
     }
-    @keyframes show-hide{
-        0%{
+
+    @keyframes show-hide {
+        0% {
             opacity: 0;
         }
-        50%{
+
+        50% {
             opacity: 1;
         }
-        75%{
+
+        75% {
             opacity: 1;
         }
-        100%{
+
+        100% {
             opacity: 0;
         }
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Feature.css';
+import './Feature.scss';
 import FeatureItem from '../FeatureItem/FeatureItem';
 import featuresData from '../../data/feature.json';
 

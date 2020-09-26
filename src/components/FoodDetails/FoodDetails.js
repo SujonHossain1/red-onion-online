@@ -30,7 +30,7 @@ const FoodDetails = () => {
  
 
     return (
-        <div className="container">
+        <div className="container mt-5 pt-5">
             <div className="row py-5">
                 <div className="col-md-6">
                     <div className="food-description">
