@@ -5,6 +5,10 @@ const CheckoutCart = ({ cartItem }) => {
     const { id, title, price, quantity, img } = cartItem;
     console.log(quantity);
     const { checkOutItemHandler } = useContext(CartContext)
+
+    
+
+
     return (
         <div>
             <div class=" mb-3 bg-light rounded d-flex align-items-center justify-content-between p-3">

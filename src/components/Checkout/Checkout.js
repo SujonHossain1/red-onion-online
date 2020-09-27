@@ -1,11 +1,20 @@
-import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../../App';
 import CheckoutCart from '../CheckoutCart/CheckoutCart';
 import ShipmentForm from '../ShipmentForm/ShipmentForm';
 
 const Checkout = () => {
     const { cart } = useContext(CartContext);
+    const [shipment, setShipment] = useState(false);
+    const onSubmit = (data, e) => {
+        const { door, rood, flat, business, address } = data;
 
+        if (door && rood && flat && business && address) {
+            setShipment(true);
+        }
+        e.target.reset();
+    }
 
     const subTotal = cart.reduce((total, item) => {
         return total + (item.price * item.quantity);
@@ -21,7 +30,7 @@ const Checkout = () => {
         <div className="container py-5 my-5">
             <div className="row justify-content-between">
                 <div className="col-md-5">
-                    <ShipmentForm />
+                    <ShipmentForm onSubmit={onSubmit} />
                 </div>
                 <div className="col-md-5">
                     <div className="pb-5">
@@ -49,7 +58,14 @@ const Checkout = () => {
                             <span>Total</span>
                             <span>${grandTotal}</span>
                         </p>
-                        <button className="btn btn-block btn-secondary">Check Out Your Food</button>
+                        {
+                            shipment ?
+                                <Link to="/delivery" style={{textDecoration: 'none'}}>
+                                    <button className="btn btn-block btn-secondary">Check Out Your Food</button>
+                                </Link>
+                                :
+                                <button disabled className="btn btn-block btn-secondary">Check Out Your Food</button>
+                        }
                     </div>
                 </div>
 

@@ -14,6 +14,8 @@ import FoodDetails from './components/FoodDetails/FoodDetails';
 import Checkout from './components/Checkout/Checkout';
 import Login from './components/Login/Login';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import NoMatch from './components/NoMatch/NoMatch';
+import Delivery from './components/Delivery/Delivery';
 
 
 export const UserContext = createContext();
@@ -28,6 +30,10 @@ function App() {
         isSignIn: false,
         error: ''
     })
+
+     if (loggedInUser.error) {
+        setTimeout(() => setLoggedInUser({error: ''}), 2000)
+    }
 
     const [cart, setCart] = useState([]);
 
@@ -59,7 +65,7 @@ function App() {
 
     return (
         <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-            <CartContext.Provider value={{ cart, handleAddToCart, checkOutItemHandler }}>
+            <CartContext.Provider value={{ cart, handleAddToCart, checkOutItemHandler, setCart }}>
                 <Router>
                     <Switch>
                         <Route exact path="/">
@@ -84,6 +90,12 @@ function App() {
                         </Route>
                         <Route path="/signup">
                             <Login />
+                        </Route>
+                        <Route path='/delivery'>
+                            <Delivery />
+                        </Route>
+                        <Route path="*">
+                            <NoMatch />
                         </Route>
                     </Switch>
                 </Router>

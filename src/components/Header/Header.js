@@ -3,10 +3,22 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import logo from '../../images/logo2.png';
 import './Header.scss';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../App';
+import { CartContext, UserContext } from '../../App';
 
 const Header = () => {
     const { cart } = useContext(CartContext);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+
+    let imgStyle = { height: "", width: "" }
+
+    if (loggedInUser.photo) {
+        imgStyle = {
+            height: "50px",
+            width: "50px",
+            borderRadius: "50%",
+            border: "1px solid gray"
+        }
+    }
 
     return (
         <nav className="navbar navbar-expand navbar-light fixed-top bg-light bg-white py-2">
@@ -23,15 +35,42 @@ const Header = () => {
                                 <span className="count"> {cart.length} </span>
                             </Link>
                         </li>
+                       
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login">
-                                <button className="btn rounded-pill">LogIn</button>
-                            </Link>
+                            {
+                                loggedInUser.isSignIn ?
+                                    <Link className="nav-link" to="/checkout">
+                                        <button className="btn rounded-pill"> {loggedInUser.name} </button>
+                                    </Link>
+                                    :
+                                    <Link className="nav-link" to="/login">
+                                        <button className="btn rounded-pill">LogIn</button>
+                                    </Link>
+                            }
                         </li>
+                        <li className="nav-item" style={{ paddingRight: "1px", marginTop: '3px' }}>
+                            {
+                                loggedInUser.isSignIn && <img
+                                    style={imgStyle}
+                                    src={loggedInUser.photo}
+                                    alt="" />
+                            }
+                        </li>
+
                         <li className="nav-item">
-                            <Link className="nav-link" to="/signup">
-                                <button className="btn  btn-rounded btn-danger">Sign Up</button>
-                            </Link>
+                            {
+                                loggedInUser.isSignIn ?
+                                    <span className="nav-link">
+                                        <button
+                                            onClick={() => setLoggedInUser({})}
+                                            className="btn  btn-rounded btn-danger"
+                                        >Sign Out</button>
+                                    </span>
+                                    :
+                                    <Link className="nav-link" to="/signup">
+                                        <button className="btn  btn-rounded btn-danger">Sign Up</button>
+                                    </Link>
+                            }
                         </li>
                     </ul>
                 </div>

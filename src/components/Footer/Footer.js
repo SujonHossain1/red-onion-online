@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import logo from '../../images/logo.png';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
-                        <img style={{ height: '60px' }} src={logo} alt="" />
+                        <img className="pb-3" style={{ height: '60px' }} src={logo} alt="" />
                     </div>
                     <div className="col-md-3">
                         <div className="list-unstyled">
@@ -19,11 +19,13 @@ const Footer = () => {
                             <li><Link className="link" to="/">Add your restaurant</Link></li>
                         </div>
                     </div>
-                    <div className="list-unstyled">
-                        <li><Link className="link" to="/">Get Help</Link></li>
-                        <li><Link className="link" to="/">Read FAQ</Link></li>
-                        <li><Link className="link" to="/">View All Cites</Link></li>
-                        <li><Link className="link" to="/">Restaurant near me</Link></li>
+                    <div className="col-md-3">
+                        <div className="list-unstyled">
+                            <li><Link className="link" to="/">Get Help</Link></li>
+                            <li><Link className="link" to="/">Read FAQ</Link></li>
+                            <li><Link className="link" to="/">View All Cites</Link></li>
+                            <li><Link className="link" to="/">Restaurant near me</Link></li>
+                        </div>
                     </div>
                 </div>
                 <div className="row mt-5">

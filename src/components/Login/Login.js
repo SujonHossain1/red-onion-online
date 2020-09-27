@@ -17,6 +17,7 @@ const Login = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [newUser, setNewUser] = useState(false);
+    
 
     initializeAppFirebase();
     const history = useHistory();
@@ -24,6 +25,7 @@ const Login = () => {
 
     let { from } = location.state || { from: { pathname: "/" } };
 
+    
 
     // SignIn With Google
     const signInGoogle = () => {
@@ -52,32 +54,38 @@ const Login = () => {
 
 
     // SignUp With Name, Password, Email
-    const onSubmit = (data) => {
+    const onSubmit = (data, event) => {
         const { name, email, confirmPassword, password } = data;
 
         if (newUser && name && email && confirmPassword) {
             signUpWithEmailAndPassword(name, email, confirmPassword)
                 .then(res => {
                     setLoggedInUser(res);
+                    setNewUser(false);
+                    event.target.reset();
                 })
                 .catch(err => {
                     setLoggedInUser(err);
                 })
+
         }
         if (!newUser && email && password) {
             signInWithEmailAndPasswordOwn(email, password)
                 .then(res => {
                     setLoggedInUser(res);
-                    history.replace(from);
-
                 })
                 .catch(err => {
                     setLoggedInUser(err);
+                    history.replace('/login');
                 })
 
         }
-    }
 
+
+    }
+    if (loggedInUser.isSignIn) {
+        history.replace(from);
+    }
 
     return (
         <div className="login">
@@ -163,7 +171,9 @@ const Login = () => {
                 </p>
 
                 <div className="mt-3 text-center">
-                    <p style={{ color: 'red' }}> {loggedInUser.error} </p>
+                    {
+                         <p style={{ color: 'red' }}> {loggedInUser.error} </p>
+                    }
                 </div>
             </div>
         </div>
