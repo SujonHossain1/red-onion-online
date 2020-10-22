@@ -8,6 +8,14 @@ export const initializeAppFirebase = () => {
     }
 }
 
+const userLoginToken = () => {
+    firebase.auth().currentUser.getIdToken(true)
+    .then(function (idToken) {
+        sessionStorage.setItem('token', idToken)
+    }).catch(function (error) {
+        
+    });
+}
 
 // SignIn With Google
 export const signInWithGoogle = () => {
@@ -15,6 +23,7 @@ export const signInWithGoogle = () => {
 
     return firebase.auth().signInWithPopup(googleProvider)
         .then(res => {
+            userLoginToken();
             return successfulResponse(res);
         })
         .catch(error => {
@@ -36,12 +45,12 @@ export const signInWithFacebook = () => {
 }
 
 // SingUp With Name, Email and Password
-export const signUpWithEmailAndPassword = (name,  email, password) => {
+export const signUpWithEmailAndPassword = (name, email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(res => {
             return firebase.auth().currentUser.updateProfile({
                 displayName: name,
-               
+
             }).then(() => {
                 return ((prevData) => {
                     return {

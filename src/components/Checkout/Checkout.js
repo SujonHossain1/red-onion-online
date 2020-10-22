@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { CartContext } from '../../App';
 import CheckoutCart from '../CheckoutCart/CheckoutCart';
 import ShipmentForm from '../ShipmentForm/ShipmentForm';
+import ProcessPayment from '../ProcessPayment/ProcessPayment';
 
 const Checkout = () => {
     const { cart } = useContext(CartContext);
@@ -31,6 +32,7 @@ const Checkout = () => {
             <div className="row justify-content-between">
                 <div className="col-md-5">
                     <ShipmentForm onSubmit={onSubmit} />
+                    <ProcessPayment/>
                 </div>
                 <div className="col-md-5">
                     <div className="pb-5">

@@ -25,7 +25,7 @@ const Login = () => {
 
     let { from } = location.state || { from: { pathname: "/" } };
 
-    
+   
 
     // SignIn With Google
     const signInGoogle = () => {
